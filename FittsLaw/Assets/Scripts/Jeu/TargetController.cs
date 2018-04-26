@@ -31,16 +31,7 @@ public class TargetController : MonoBehaviour {
 
     public void Click(string color)
     {
-        //  Play Sound His or Miss
-        switch (color)
-        {
-            case "vert":
-                Hit.Play();
-                break;
-            case "rouge":
-                Miss.Play();
-                break;
-        }
+
 
         //  Right CTRL
         if (name.Contains("Right"))
@@ -48,6 +39,7 @@ public class TargetController : MonoBehaviour {
             if (is_active_R)
             {
                 ChangeColor.SetColor(color, Target_R);
+                Hit_or_miss(color);
 
                 //  desactive right
                 Panel_MR.SetActive(false);
@@ -68,6 +60,7 @@ public class TargetController : MonoBehaviour {
             if (is_active_L)
             {
                 ChangeColor.SetColor(color, Target_L);
+                Hit_or_miss(color);
 
                 //  desactive left
                 Panel_ML.SetActive(false);
@@ -84,6 +77,23 @@ public class TargetController : MonoBehaviour {
         }
 
 
+    }
+
+
+
+
+    void Hit_or_miss(string color)
+    {
+        //  Play Sound His or Miss
+        switch (color)
+        {
+            case "vert":
+                Hit.Play();
+                break;
+            case "rouge":
+                Miss.Play();
+                break;
+        }
     }
 
     public bool is_drag = false;
