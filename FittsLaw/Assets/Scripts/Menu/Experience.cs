@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Experience : MonoBehaviour {
+public class Experience : MonoBehaviour
+{
 
     public static Experience control;
 
@@ -21,9 +22,7 @@ public class Experience : MonoBehaviour {
     public Dictionary<string, List<float>> d_time;
 
 
-
-
-    void Awake ()
+    void Awake()
     {
         if (control == null)
         {
@@ -34,6 +33,7 @@ public class Experience : MonoBehaviour {
         else if (control != this)
         {
             Destroy(gameObject);
+            Debug.Log(l_distance);
         }
 
     }

@@ -17,8 +17,12 @@ public class ParamController : MonoBehaviour {
 
     GameObject TextParam;
     GameObject PlayButton;
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    /**
+     * #Brief : if the player parametrize the game in param scene we show a message and activate the game Button
+     */
+    void Start () {
         TextParam = GameObject.Find("TextParam");
         PlayButton = GameObject.Find("ButtonJeu");
         //Debug.Log(is_active);
@@ -33,9 +37,12 @@ public class ParamController : MonoBehaviour {
         }
         begin_time = Time.time;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    /**
+     * #Brief : Just count float wait_time to make the message disappear
+     */
+    void Update () {
         float current_time = Time.time;
         if (is_parametrize)
         {

@@ -51,8 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Admin\ClonePanel.cs" />
-     <Compile Include="Assets\Scripts\Admin\removeClick.cs" />
+     <Compile Include="Assets\Scripts\Admin\PanelCtrl.cs" />
      <Compile Include="Assets\Scripts\Admin\ResizePanel.cs" />
      <Compile Include="Assets\Scripts\Admin\ValideSettings.cs" />
      <Compile Include="Assets\Scripts\Jeu\ChangeColor.cs" />

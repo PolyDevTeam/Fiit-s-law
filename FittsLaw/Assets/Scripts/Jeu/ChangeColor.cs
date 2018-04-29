@@ -6,7 +6,11 @@ using UnityEngine.UI;
 public class ChangeColor : MonoBehaviour {
 
 
-
+    /**
+     * #Brief : Change the Color of the GameObject obj(imageTarget)
+     * #args : string color -> the color to use
+     *         GameObject obj -> the object to apply the color
+     */
     public static void SetColor(string color, GameObject obj)
     {
         Image img = obj.GetComponent<Image>();

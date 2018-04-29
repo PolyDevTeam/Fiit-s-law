@@ -24,7 +24,6 @@ public class ValideSettings : MonoBehaviour
 
     public void Validation()
     {
-
         SceneManager.LoadScene(0);
         ParamController.is_parametrize = true;
     }

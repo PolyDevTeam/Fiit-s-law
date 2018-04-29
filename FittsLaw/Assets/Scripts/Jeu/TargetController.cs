@@ -29,6 +29,10 @@ public class TargetController : MonoBehaviour {
 
     }
 
+    /**
+     * #Brief : if you click on target desactive his side and activate the other
+     * #args : string color -> the color is the color to apply to the target and indicate if hit -> green if miss -> red
+     */
     public void Click(string color)
     {
 
@@ -81,7 +85,10 @@ public class TargetController : MonoBehaviour {
 
 
 
-
+    /**
+     * #Brief : play some jingle or animation depend on color if hit or miss
+     * #args : string color -> indicate if hit->green or miss->red
+     */
     void Hit_or_miss(string color)
     {
         //  Play Sound His or Miss

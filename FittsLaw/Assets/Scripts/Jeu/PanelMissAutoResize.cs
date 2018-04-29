@@ -7,6 +7,9 @@ public class PanelMissAutoResize : MonoBehaviour {
     public GameObject target;
 
     // Use this for initialization
+    /**
+     * #Brief : auto resize the gameobject with this script to 2.5*size of the GameObject target
+     */
     void Start () {
         RectTransform rect = GetComponent<RectTransform>();
         RectTransform rect_target = target.GetComponent<RectTransform>();
