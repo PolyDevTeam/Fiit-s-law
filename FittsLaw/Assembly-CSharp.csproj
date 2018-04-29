@@ -51,6 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Admin\ClonePanel.cs" />
+     <Compile Include="Assets\Scripts\Admin\removeClick.cs" />
+     <Compile Include="Assets\Scripts\Admin\ResizePanel.cs" />
      <Compile Include="Assets\Scripts\Admin\ValideSettings.cs" />
      <Compile Include="Assets\Scripts\Jeu\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\Jeu\PanelMissAutoResize.cs" />
@@ -58,6 +61,7 @@
      <Compile Include="Assets\Scripts\Jeu\TargetController.cs" />
      <Compile Include="Assets\Scripts\Jeu\touch.cs" />
      <Compile Include="Assets\Scripts\Menu\BouttonMenu.cs" />
+     <Compile Include="Assets\Scripts\Menu\Experience.cs" />
      <Compile Include="Assets\Scripts\Menu\ParamController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
