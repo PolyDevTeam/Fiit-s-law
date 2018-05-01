@@ -7,21 +7,6 @@ using UnityEngine.UI;
 public class ValideSettings : MonoBehaviour
 {
 
-    // Use this for initialization
-    void Start()
-    {
-        //Distance = GameObject.Find("InputFieldDistance").GetComponent<InputField>();
-        //Essais = GameObject.Find("InputFieldEssais").GetComponent<InputField>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
-
     public void Validation()
     {
         SceneManager.LoadScene(0);

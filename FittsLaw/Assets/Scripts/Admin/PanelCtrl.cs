@@ -8,6 +8,7 @@ public class PanelCtrl : MonoBehaviour
 
     public Stack<GameObject> s_Panel;
     ScrollRect scrollRect;
+    GameObject ContentPanel;
 
     //  For save Distance data in for expérience
     Experience exp;
@@ -16,8 +17,13 @@ public class PanelCtrl : MonoBehaviour
     void Start()
     {
         s_Panel = new Stack<GameObject>();
-        s_Panel.Push(GameObject.Find("PanelEssai"));
+        GameObject panel1 = GameObject.Find("PanelEssai");
+        panel1.GetComponentsInChildren<Text>()[0].text = "D0";
+
+        s_Panel.Push(panel1);
         scrollRect = GameObject.Find("Scroll View").GetComponent<ScrollRect>();
+
+        ContentPanel = GameObject.Find("Content");
 
         exp = Experience.control;
     }
@@ -32,10 +38,16 @@ public class PanelCtrl : MonoBehaviour
         GameObject clone = Instantiate(src, src.transform.parent);
         s_Panel.Push(clone);
         clone.name += s_Panel.Count;
+        clone.GetComponentsInChildren<Text>()[0].text = "D" + (s_Panel.Count - 1);
+        clone.GetComponentInChildren<InputField>().text = "";
+
+
         Debug.Log("size = " + s_Panel.Count);
 
         //  Scroll to the down
         scrollRect.velocity = new Vector2(0f, 1000f);
+
+        ResizePanel.Resize(ContentPanel, 250);
 
     }
 
@@ -47,6 +59,7 @@ public class PanelCtrl : MonoBehaviour
         if (s_Panel.Count > 1)
         {
             Destroy(s_Panel.Pop());
+            ResizePanel.Resize(ContentPanel, -250);
 
         }
     }

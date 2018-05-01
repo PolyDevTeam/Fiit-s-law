@@ -10,11 +10,12 @@ public class ResizePanel : MonoBehaviour {
 
     /**
      * #Brief : Resise the content Content panel when adding new PanelEssai
-     * #args : float y -> the size to add or remove of the COntent panel
+     * #args : GameObject src -> the object to resize
+     *         float y -> the size to add or remove of the COntent panel 
      */
-    public void Resize(float y)
+    public static void Resize(GameObject src, float y)
     {
-        RectTransform r = gameObject.GetComponent<RectTransform>();
+        RectTransform r = src.GetComponent<RectTransform>();
 
         Vector2 temp = new Vector2(0, y);
         r.sizeDelta += temp;
