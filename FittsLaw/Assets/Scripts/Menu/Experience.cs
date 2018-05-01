@@ -15,6 +15,8 @@ public class Experience : MonoBehaviour
      * List of distances
      * Dictionnary for (Name of subject, List of time)
      *
+     * Id Essai actuelle
+     * List des temps de l'utilisateur actuelle
     **/
 
     public int nEssais;
@@ -22,6 +24,8 @@ public class Experience : MonoBehaviour
     public List<float> l_distance;
     public Dictionary<string, List<float>> d_time;
 
+    public int essaiAct;
+    public List<float> l_temps;
 
 
     void Awake()

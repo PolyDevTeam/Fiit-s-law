@@ -56,9 +56,12 @@
      <Compile Include="Assets\Scripts\Admin\ResizePanel.cs" />
      <Compile Include="Assets\Scripts\Admin\ValideSettings.cs" />
      <Compile Include="Assets\Scripts\Jeu\ChangeColor.cs" />
+     <Compile Include="Assets\Scripts\Jeu\ModalCtrl.cs" />
      <Compile Include="Assets\Scripts\Jeu\PanelMissAutoResize.cs" />
-     <Compile Include="Assets\Scripts\Jeu\Score.cs" />
+     <Compile Include="Assets\Scripts\Jeu\PanelVirtuelleCtrl.cs" />
+     <Compile Include="Assets\Scripts\Jeu\ScrollBarCtrl.cs" />
      <Compile Include="Assets\Scripts\Jeu\TargetController.cs" />
+     <Compile Include="Assets\Scripts\Jeu\TimerCtrl.cs" />
      <Compile Include="Assets\Scripts\Jeu\touch.cs" />
      <Compile Include="Assets\Scripts\Menu\BouttonMenu.cs" />
      <Compile Include="Assets\Scripts\Menu\Experience.cs" />

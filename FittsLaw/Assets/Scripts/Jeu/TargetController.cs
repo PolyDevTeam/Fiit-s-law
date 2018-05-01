@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TargetController : MonoBehaviour {
 
@@ -15,18 +16,46 @@ public class TargetController : MonoBehaviour {
     AudioSource Hit;
     AudioSource Miss;
 
+    Experience exp;
+    static float nbClick;
+    GameObject timer;
+
+
 
     // Use this for initialization
+    /**
+     * #Brief : Init the Targets, the MissPanels, the audio, and place the target at the needed distance and resize the miss panel to the target
+     */
     void Start()
     {
+        //GameObject.Find("PanelNext").SetActive(false);
         Panel_MR = GameObject.Find("PanelMissRight");
         Panel_ML = GameObject.Find("PanelMissLeft");
         Target_R = GameObject.Find("TargetRight");
         Target_L = GameObject.Find("TargetLeft");
 
+
+
         Hit = GameObject.Find("AudioHit").GetComponent<AudioSource>();
         Miss = GameObject.Find("AudioMiss").GetComponent<AudioSource>();
 
+        exp = Experience.control;
+        timer = GameObject.Find("Temp");
+
+
+        float distance = exp.l_distance[0];
+        nbClick = exp.nAllerRetour*2 + 1;
+        //Debug.Log("distance =" + distance);
+
+        //  Place the target and resize the panelMiss
+        Target_R.transform.position = new Vector3(distance / 2, 0);
+        Target_L.transform.position = new Vector3(-distance / 2, 0);
+
+        Panel_ML.GetComponent<PanelMissAutoResize>().resize();
+        Panel_MR.GetComponent<PanelMissAutoResize>().resize();
+
+
+        
     }
 
     /**
@@ -35,7 +64,6 @@ public class TargetController : MonoBehaviour {
      */
     public void Click(string color)
     {
-
 
         //  Right CTRL
         if (name.Contains("Right"))
@@ -54,6 +82,7 @@ public class TargetController : MonoBehaviour {
                 Panel_ML.SetActive(true);
                 is_active_L = true;
 
+                nbClick--;
             }
 
         }
@@ -76,8 +105,24 @@ public class TargetController : MonoBehaviour {
                 Panel_MR.SetActive(true);
                 is_active_R = true;
 
+                nbClick--;
             }
 
+        }
+
+
+        //  Active the Timer when first click
+        if (timer.GetComponent<TimerCtrl>().startT == false)
+        {
+            timer.GetComponent<TimerCtrl>().StartTimer();
+        }
+
+        //  Desactive the timer if click count < Experience.nbAllerRetour
+        if (nbClick == 0)
+        {
+            timer.GetComponent<TimerCtrl>().StopTimerAndSave();
+            Debug.Log("testc");
+            //GameObject.Find("PanelNext").SetActive(true);
         }
 
 
@@ -103,9 +148,12 @@ public class TargetController : MonoBehaviour {
         }
     }
 
-    public bool is_drag = false;
+
 
     //  Method for Drag
+    public bool is_drag = false;
+
+    
     public void Down()
     {
         is_drag = true;

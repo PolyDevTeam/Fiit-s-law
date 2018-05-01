@@ -7,10 +7,21 @@ public class PanelMissAutoResize : MonoBehaviour {
     public GameObject target;
 
     // Use this for initialization
-    /**
-     * #Brief : auto resize the gameobject with this script to 2.5*size of the GameObject target
-     */
+
     void Start () {
+
+    }
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+    /**
+     * #Brief : auto resize the gameobject with this script to 2.5*size of the GameObject target and move the panel to the target position
+     */
+    public void resize()
+    {
         RectTransform rect = GetComponent<RectTransform>();
         RectTransform rect_target = target.GetComponent<RectTransform>();
 
@@ -20,12 +31,6 @@ public class PanelMissAutoResize : MonoBehaviour {
         rect.transform.localScale = new Vector3(2.5f, 2.5f, 1f);
 
         Vector3 position_target = rect_target.position;
-
         rect.position = position_target;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
