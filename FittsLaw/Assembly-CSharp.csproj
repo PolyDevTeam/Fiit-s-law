@@ -56,7 +56,6 @@
      <Compile Include="Assets\Scripts\Admin\ResizePanel.cs" />
      <Compile Include="Assets\Scripts\Admin\ValideSettings.cs" />
      <Compile Include="Assets\Scripts\Jeu\ChangeColor.cs" />
-     <Compile Include="Assets\Scripts\Jeu\ModalCtrl.cs" />
      <Compile Include="Assets\Scripts\Jeu\PanelMissAutoResize.cs" />
      <Compile Include="Assets\Scripts\Jeu\PanelVirtuelleCtrl.cs" />
      <Compile Include="Assets\Scripts\Jeu\ScrollBarCtrl.cs" />

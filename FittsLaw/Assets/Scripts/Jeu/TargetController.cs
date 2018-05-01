@@ -19,7 +19,7 @@ public class TargetController : MonoBehaviour {
     Experience exp;
     static float nbClick;
     GameObject timer;
-
+    static GameObject PopUpNext;
 
 
     // Use this for initialization
@@ -42,10 +42,14 @@ public class TargetController : MonoBehaviour {
         exp = Experience.control;
         timer = GameObject.Find("Temp");
 
-
         float distance = exp.l_distance[0];
         nbClick = exp.nAllerRetour*2 + 1;
-        //Debug.Log("distance =" + distance);
+
+        PopUpNext = GameObject.Find("PanelNext");
+        if (gameObject.name.Contains("Left"))
+        {
+            PopUpNext.SetActive(false);
+        }
 
         //  Place the target and resize the panelMiss
         Target_R.transform.position = new Vector3(distance / 2, 0);
@@ -55,7 +59,7 @@ public class TargetController : MonoBehaviour {
         Panel_MR.GetComponent<PanelMissAutoResize>().resize();
 
 
-        
+
     }
 
     /**
@@ -121,8 +125,10 @@ public class TargetController : MonoBehaviour {
         if (nbClick == 0)
         {
             timer.GetComponent<TimerCtrl>().StopTimerAndSave();
-            Debug.Log("testc");
-            //GameObject.Find("PanelNext").SetActive(true);
+            if (gameObject.name.Contains("Left"))
+            {
+                PopUpNext.SetActive(true);
+            }
         }
 
 
