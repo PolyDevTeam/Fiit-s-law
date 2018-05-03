@@ -24,24 +24,90 @@ public class Experience : MonoBehaviour
     public List<float> l_distance;
     public Dictionary<string, List<float>> d_time;
 
-    public int essaiAct;
+    public int essaiAct = 0;
     public List<float> l_temps;
 
-
+    /**
+     * #Brief : Singleton when game start create an consistant instance of this object
+     */
     void Awake()
     {
         if (control == null)
         {
             DontDestroyOnLoad(gameObject);
             control = this;
+            l_temps = new List<float>();
+            d_time = new Dictionary<string, List<float>>();
+            l_distance = new List<float>();
         }
 
         else if (control != this)
         {
             Destroy(gameObject);
-            Debug.Log(l_distance);
         }
 
+    }
+
+
+    /**
+     * #Brief : Parse the Experience object to JSON format to put in JSON FILE
+     */
+    public string ToJson()
+    {
+        string json = "";
+
+        //  Debut du JSON
+        json += "{" + "\n";
+
+        //  Objet Expérience
+        json += "\"Experience\"" + ": " + "{" + "\n";
+
+        //  Nombre Essais
+        json += "\"NombreEssais\"" + ": " + nEssais + "," + "\n";
+
+        //  NombreAllerRetour
+        json += "\"NombreAllerRetour\"" + ": " + nAllerRetour + "," + "\n";
+
+        //  ListeDistances
+        json += "\"ListeDistance\"" + ": " + "[";
+        foreach (float t in l_distance)
+        {
+            json += t + ", ";
+        }
+        json = json.Remove(json.Length - 2);
+        json += "]" + "," + "\n";
+
+        //  Dictionnaire <Nom, ListeTemps>
+        /**
+         *  Objet Nom0
+         *      [T0, T1, T2, ...]
+         *  Object Nom1
+         *      [T0, T1, T2, ...]
+         */
+
+        json += "\"Dictionnaire\"" + ": " + "{" + "\n";
+        foreach(KeyValuePair<string, List<float>> item in d_time)
+        {
+            json += "\"" + item.Key + "\"" + ": " + "[";
+            foreach(float time in item.Value)
+            {
+                json += time + ", ";
+            }
+            json = json.Remove(json.Length - 2);
+            json += "]" + "," + "\n";
+        }
+        json = json.Remove(json.Length - 2);
+        json += "\n";
+        json += "}" + "\n";
+
+        //  Fin Experience objet
+        json += "}" + "\n";
+
+
+        //  Fin du JSON
+        json += "}";
+
+        return json;
     }
 
 

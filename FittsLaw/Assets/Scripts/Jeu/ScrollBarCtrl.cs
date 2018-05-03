@@ -9,6 +9,10 @@ public class ScrollBarCtrl : MonoBehaviour {
 	void Start () {
         //  The scrollbar begin on middle
         gameObject.GetComponent<Scrollbar>().value = 0.5f;
+        Experience exp = Experience.control;
+        float tbar = 800 / (exp.l_distance[exp.essaiAct] + 2 * (1f / 3f * exp.l_distance[exp.essaiAct]));
+        //Debug.Log(tbar);
+        gameObject.GetComponent<Scrollbar>().size = tbar;
 	}
 	
 	// Update is called once per frame

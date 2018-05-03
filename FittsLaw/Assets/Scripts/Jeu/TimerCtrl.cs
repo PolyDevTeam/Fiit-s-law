@@ -10,6 +10,7 @@ public class TimerCtrl : MonoBehaviour {
 
     //  variable for timer
     float begin_time, current_time;
+    float just_time;
 
     Experience exp;
 
@@ -18,7 +19,7 @@ public class TimerCtrl : MonoBehaviour {
     {
         t_timer = GameObject.Find("Temp").GetComponent<Text>();
         t_timer.text = "0";
-        exp = Experience.control;
+        exp = Experience.control;        
     }
 
     public void StartTimer()
@@ -30,7 +31,12 @@ public class TimerCtrl : MonoBehaviour {
     public void StopTimerAndSave()
     {
         startT = false;
-        exp.l_temps.Add(current_time - begin_time);
+
+        exp.l_temps.Add(just_time);
+        for (int i = 0; i < exp.l_temps.Count; i++)
+        {
+            Debug.Log("I = " + exp.l_temps.Count + " " + exp.l_temps[i]);
+        }
     }
 
     // Update is called once per frame
@@ -39,7 +45,8 @@ public class TimerCtrl : MonoBehaviour {
         if (startT == true)
         {
             float current_time = Time.time;
-            t_timer.text = (current_time - begin_time).ToString("#.000");
+            just_time = (current_time - begin_time);
+            t_timer.text = just_time.ToString("#.000");
         }
 
     }

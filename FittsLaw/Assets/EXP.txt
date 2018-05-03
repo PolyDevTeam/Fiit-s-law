@@ -1,0 +1,11 @@
+{
+"Experience": {
+"NombreEssais": 2,
+"NombreAllerRetour": 2,
+"ListeDistance": [500, 500],
+"Dictionnaire": {
+"a": [1.407981, 1.507567],
+"b": [1.375033, 1.457866]
+}
+}
+}

@@ -25,6 +25,7 @@ public class TargetController : MonoBehaviour {
     // Use this for initialization
     /**
      * #Brief : Init the Targets, the MissPanels, the audio, and place the target at the needed distance and resize the miss panel to the target
+     *          
      */
     void Start()
     {
@@ -42,7 +43,7 @@ public class TargetController : MonoBehaviour {
         exp = Experience.control;
         timer = GameObject.Find("Temp");
 
-        float distance = exp.l_distance[0];
+        float distance = exp.l_distance[exp.essaiAct];
         nbClick = exp.nAllerRetour*2 + 1;
 
         PopUpNext = GameObject.Find("PanelNext");
@@ -64,10 +65,12 @@ public class TargetController : MonoBehaviour {
 
     /**
      * #Brief : if you click on target desactive his side and activate the other
+     *          lunch timer and if the Essai is over lunch the popup to change Essai
      * #args : string color -> the color is the color to apply to the target and indicate if hit -> green if miss -> red
      */
     public void Click(string color)
     {
+        StartTimer();
 
         //  Right CTRL
         if (name.Contains("Right"))
@@ -87,6 +90,8 @@ public class TargetController : MonoBehaviour {
                 is_active_L = true;
 
                 nbClick--;
+
+                EssaiFinish();
             }
 
         }
@@ -110,30 +115,43 @@ public class TargetController : MonoBehaviour {
                 is_active_R = true;
 
                 nbClick--;
+
+                EssaiFinish();
             }
 
         }
 
 
+
+
+
+
+    }
+
+    void StartTimer()
+    {
         //  Active the Timer when first click
         if (timer.GetComponent<TimerCtrl>().startT == false)
         {
             timer.GetComponent<TimerCtrl>().StartTimer();
         }
 
+    }
+
+    void EssaiFinish()
+    {
         //  Desactive the timer if click count < Experience.nbAllerRetour
         if (nbClick == 0)
         {
             timer.GetComponent<TimerCtrl>().StopTimerAndSave();
-            if (gameObject.name.Contains("Left"))
-            {
-                PopUpNext.SetActive(true);
-            }
+            PopUpNext.SetActive(true);
+            float distance = exp.l_distance[exp.essaiAct];
+            PopUpNext.GetComponent<RectTransform>().sizeDelta = new Vector2(distance + 2 * (1f / 3f * distance), 1280);
+            PopUpNext.GetComponent<RectTransform>().position = new Vector3(0, 0);
+            is_active_L = true;
+            is_active_R = true;
         }
-
-
     }
-
 
 
     /**
