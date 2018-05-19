@@ -64,11 +64,12 @@
      <Compile Include="Assets\Scripts\Jeu\TargetController.cs" />
      <Compile Include="Assets\Scripts\Jeu\TimerCtrl.cs" />
      <Compile Include="Assets\Scripts\Jeu\touch.cs" />
+     <Compile Include="Assets\Scripts\Jeu\VieCtrl.cs" />
      <Compile Include="Assets\Scripts\Menu\BouttonMenu.cs" />
      <Compile Include="Assets\Scripts\Menu\Experience.cs" />
      <Compile Include="Assets\Scripts\Menu\ParamController.cs" />
+     <Compile Include="Assets\Scripts\Resultat\ExportToCsv.cs" />
      <Compile Include="Assets\Scripts\Resultat\ExportToJSON.cs" />
-     <None Include="Assets\EXP.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

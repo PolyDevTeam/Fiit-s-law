@@ -19,7 +19,10 @@ public class TargetController : MonoBehaviour {
     Experience exp;
     static float nbClick;
     GameObject timer;
+    GameObject vie;
+
     static GameObject PopUpNext;
+    static GameObject PopUpEchec;
 
 
     // Use this for initialization
@@ -42,22 +45,25 @@ public class TargetController : MonoBehaviour {
 
         exp = Experience.control;
         timer = GameObject.Find("Temp");
+        vie = GameObject.Find("Vie");
 
         float distance = exp.l_distance[exp.essaiAct];
-        nbClick = exp.nAllerRetour*2 + 1;
+        nbClick = exp.nAllerRetour + 1;
 
         PopUpNext = GameObject.Find("PanelNext");
+        PopUpEchec = GameObject.Find("PanelEchec");
         if (gameObject.name.Contains("Left"))
         {
             PopUpNext.SetActive(false);
+            PopUpEchec.SetActive(false);
         }
 
         //  Place the target and resize the panelMiss
         Target_R.transform.position = new Vector3(distance / 2, 0);
         Target_L.transform.position = new Vector3(-distance / 2, 0);
 
-        Panel_ML.GetComponent<PanelMissAutoResize>().resize();
-        Panel_MR.GetComponent<PanelMissAutoResize>().resize();
+        Panel_ML.GetComponent<PanelMissAutoResize>().Resize(distance + distance*0.4f);
+        Panel_MR.GetComponent<PanelMissAutoResize>().Resize(distance + distance*0.4f);
 
 
 
@@ -168,10 +174,25 @@ public class TargetController : MonoBehaviour {
                 break;
             case "rouge":
                 Miss.Play();
+                vie.GetComponent<VieCtrl>().SetPv();
+                if (vie.GetComponent<VieCtrl>().pv <= 0)
+                {
+                    Failed();
+                }
                 break;
         }
     }
 
+    void Failed()
+    {
+        timer.GetComponent<TimerCtrl>().StopTimer();
+        PopUpEchec.SetActive(true);
+        float distance = exp.l_distance[exp.essaiAct];
+        PopUpEchec.GetComponent<RectTransform>().sizeDelta = new Vector2(distance + 2 * (1f / 3f * distance), 1280);
+        PopUpEchec.GetComponent<RectTransform>().position = new Vector3(0, 0);
+        is_active_L = true;
+        is_active_R = true;
+    }
 
 
     //  Method for Drag

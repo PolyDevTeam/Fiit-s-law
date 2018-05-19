@@ -18,7 +18,7 @@ public class PanelCtrl : MonoBehaviour
     {
         s_Panel = new Stack<GameObject>();
         GameObject panel1 = GameObject.Find("PanelEssai");
-        panel1.GetComponentsInChildren<Text>()[0].text = "D0";
+        panel1.GetComponentsInChildren<Text>()[0].text = "D1";
 
         s_Panel.Push(panel1);
         scrollRect = GameObject.Find("Scroll View").GetComponent<ScrollRect>();
@@ -38,7 +38,7 @@ public class PanelCtrl : MonoBehaviour
         GameObject clone = Instantiate(src, src.transform.parent);
         s_Panel.Push(clone);
         clone.name += s_Panel.Count;
-        clone.GetComponentsInChildren<Text>()[0].text = "D" + (s_Panel.Count - 1);
+        clone.GetComponentsInChildren<Text>()[0].text = "D" + (s_Panel.Count);
         clone.GetComponentInChildren<InputField>().text = "";
 
 

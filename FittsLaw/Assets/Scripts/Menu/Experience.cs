@@ -110,5 +110,54 @@ public class Experience : MonoBehaviour
         return json;
     }
 
+    /**
+    * #Brief : Parse the Experience object to CSV format to put in CSV EXCEL FILE
+    */
+    public string ToCsv()
+    {
+        string csv = "";
+
+
+        //  Objet Expérience
+        csv += "\"Experience\"" + "\n";
+
+        //  Nombre Essais
+        csv += "\"NombreEssais\"" + ";" + nEssais + "\n";
+
+        //  NombreAllerRetour
+        csv += "\"NombreAllerRetour\"" + ";" + nAllerRetour + "\n";
+
+        //  ListeDistances
+        csv += "\"ListeDistance\"";
+        foreach (float t in l_distance)
+        {
+            csv += ";" + t;
+        }
+        csv += "\n";
+
+        //  Dictionnaire <Nom, ListeTemps>
+        /**
+         *  Objet Nom0
+         *      [T0, T1, T2, ...]
+         *  Object Nom1
+         *      [T0, T1, T2, ...]
+         */
+
+        csv += "\"Dictionnaire\"" + "\n";
+        foreach (KeyValuePair<string, List<float>> item in d_time)
+        {
+            csv += "\"" + item.Key + "\"";
+            foreach (float time in item.Value)
+            {
+                csv += ";" + time;
+            }
+            csv += "\n";
+        }
+        csv += "\n";
+
+        //  Fin du CSV
+
+        return csv;
+    }
 
 }

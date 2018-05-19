@@ -18,7 +18,7 @@ public class ExportToJSON : MonoBehaviour {
     {
         Debug.Log(exp.ToJson());
         Debug.Log(Application.dataPath);
-        File.WriteAllText(Application.dataPath + "/EXP.txt", exp.ToJson());
+        File.WriteAllText(Application.dataPath + "/Resultats/experience.json", exp.ToJson());
     }
 
 }

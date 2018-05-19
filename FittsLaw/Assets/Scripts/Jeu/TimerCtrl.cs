@@ -39,6 +39,11 @@ public class TimerCtrl : MonoBehaviour {
         }
     }
 
+    public void StopTimer()
+    {
+        startT = false;
+    }
+
     // Update is called once per frame
     void Update()
     {

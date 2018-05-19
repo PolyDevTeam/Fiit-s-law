@@ -5,7 +5,6 @@ using UnityEngine;
 public class PanelMissAutoResize : MonoBehaviour {
 
     public GameObject target;
-
     // Use this for initialization
 
     void Start () {
@@ -19,18 +18,19 @@ public class PanelMissAutoResize : MonoBehaviour {
 
     /**
      * #Brief : auto resize the gameobject with this script to 2.5*size of the GameObject target and move the panel to the target position
+     * 
+     * #args : float d -> the distance of the game zone
      */
-    public void resize()
+    public void Resize(float d)
     {
         RectTransform rect = GetComponent<RectTransform>();
         RectTransform rect_target = target.GetComponent<RectTransform>();
 
         Vector2 size_target = rect_target.sizeDelta;
 
-        rect.sizeDelta = size_target;
-        rect.transform.localScale = new Vector3(2.5f, 2.5f, 1f);
+        // width
+        rect.sizeDelta = new Vector2(d, rect.sizeDelta.y);
 
-        Vector3 position_target = rect_target.position;
-        rect.position = position_target;
+
     }
 }
