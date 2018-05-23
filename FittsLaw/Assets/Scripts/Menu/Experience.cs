@@ -11,21 +11,25 @@ public class Experience : MonoBehaviour
     /** Attributs for the expérience
      * 
      * Number of essai
-     * Number of Aller-Retour
+     * Number of Movement
      * List of distances
      * Dictionnary for (Name of subject, List of time)
      *
      * Id Essai actuelle
      * List des temps de l'utilisateur actuelle
+     * 
+     * Liste des Moyenne de tous les utilisateurs
     **/
 
     public int nEssais;
-    public int nAllerRetour;
+    public int nMouvement;
     public List<float> l_distance;
     public Dictionary<string, List<float>> d_time;
 
     public int essaiAct = 0;
     public List<float> l_temps;
+
+    public List<float> l_mean;
 
     /**
      * #Brief : Singleton when game start create an consistant instance of this object
@@ -48,6 +52,31 @@ public class Experience : MonoBehaviour
 
     }
 
+    public void Calcul()
+    {
+        for (int i = 0; i < l_distance.Count; i++)
+        {
+            l_mean.Add(0f);
+        }
+
+
+        foreach(KeyValuePair<string, List<float>> item in d_time)
+        {
+            for (int i = 0; i < item.Value.Count; i++)
+            {
+                l_mean[i] += item.Value[i];
+            }
+        }
+
+        for (int i = 0; i < l_mean.Count; i++)
+        {
+            l_mean[i] = l_mean[i] / d_time.Count;
+        }
+
+        Debug.Log("Moyenne = " + l_mean);
+    }
+
+
 
     /**
      * #Brief : Parse the Experience object to JSON format to put in JSON FILE
@@ -66,7 +95,7 @@ public class Experience : MonoBehaviour
         json += "\"NombreEssais\"" + ": " + nEssais + "," + "\n";
 
         //  NombreAllerRetour
-        json += "\"NombreAllerRetour\"" + ": " + nAllerRetour + "," + "\n";
+        json += "\"NombreAllerRetour\"" + ": " + nMouvement + "," + "\n";
 
         //  ListeDistances
         json += "\"ListeDistance\"" + ": " + "[";
@@ -125,7 +154,7 @@ public class Experience : MonoBehaviour
         csv += "\"NombreEssais\"" + ";" + nEssais + "\n";
 
         //  NombreAllerRetour
-        csv += "\"NombreAllerRetour\"" + ";" + nAllerRetour + "\n";
+        csv += "\"NombreAllerRetour\"" + ";" + nMouvement + "\n";
 
         //  ListeDistances
         csv += "\"ListeDistance\"";

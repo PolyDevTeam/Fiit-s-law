@@ -12,7 +12,7 @@ public class VieCtrl : MonoBehaviour {
     // Use this for initialization
     void Start () {
         exp = Experience.control;
-        pv = exp.nAllerRetour*10/100;
+        pv = exp.nMouvement*10/100+1;
         t_vie = gameObject.GetComponent<Text>();
         t_vie.text = pv.ToString();
 	}

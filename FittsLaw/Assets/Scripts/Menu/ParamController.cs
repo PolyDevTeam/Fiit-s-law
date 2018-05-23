@@ -17,6 +17,7 @@ public class ParamController : MonoBehaviour {
 
     GameObject TextParam;
     GameObject PlayButton;
+    GameObject ResultButton;
 
     // Use this for initialization
     /**
@@ -25,11 +26,14 @@ public class ParamController : MonoBehaviour {
     void Start () {
         TextParam = GameObject.Find("TextParam");
         PlayButton = GameObject.Find("ButtonJeu");
+        ResultButton = GameObject.Find("ButtonResultat");
+
         //Debug.Log(is_active);
         if (is_parametrize)
         {
             TextParam.GetComponent<RectTransform>().localScale = un;
             PlayButton.GetComponent<Button>().interactable = true;
+            ResultButton.GetComponent<Button>().interactable = true;
         }
         else
         {

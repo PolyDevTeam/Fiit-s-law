@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class TargetController : MonoBehaviour {
 
-    public static bool is_active_R = true;
-    public static bool is_active_L = true;
+    public static bool is_active_R;
+    public static bool is_active_L;
 
     GameObject Panel_MR;
     GameObject Panel_ML;
@@ -38,7 +38,8 @@ public class TargetController : MonoBehaviour {
         Target_R = GameObject.Find("TargetRight");
         Target_L = GameObject.Find("TargetLeft");
 
-
+        is_active_R = true;
+        is_active_L = true;
 
         Hit = GameObject.Find("AudioHit").GetComponent<AudioSource>();
         Miss = GameObject.Find("AudioMiss").GetComponent<AudioSource>();
@@ -48,7 +49,7 @@ public class TargetController : MonoBehaviour {
         vie = GameObject.Find("Vie");
 
         float distance = exp.l_distance[exp.essaiAct];
-        nbClick = exp.nAllerRetour + 1;
+        nbClick = exp.nMouvement;
 
         PopUpNext = GameObject.Find("PanelNext");
         PopUpEchec = GameObject.Find("PanelEchec");
@@ -76,8 +77,8 @@ public class TargetController : MonoBehaviour {
      */
     public void Click(string color)
     {
-        StartTimer();
 
+        StartTimer();
         //  Right CTRL
         if (name.Contains("Right"))
         {
@@ -105,8 +106,10 @@ public class TargetController : MonoBehaviour {
         //  Left CTRL
         if (name.Contains("Left"))
         {
+
             if (is_active_L)
             {
+
                 ChangeColor.SetColor(color, Target_L);
                 Hit_or_miss(color);
 
@@ -192,6 +195,7 @@ public class TargetController : MonoBehaviour {
         PopUpEchec.GetComponent<RectTransform>().position = new Vector3(0, 0);
         is_active_L = true;
         is_active_R = true;
+        Debug.Log("r = " + is_active_L + " l = " + is_active_R);
     }
 
 

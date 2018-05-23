@@ -17,6 +17,6 @@ public class InputFieldCtrl : MonoBehaviour {
      */
     public void ClearAndSave()
     {
-        exp.nAllerRetour = int.Parse(gameObject.GetComponent<InputField>().text);
+        exp.nMouvement = int.Parse(gameObject.GetComponent<InputField>().text);
     }
 }

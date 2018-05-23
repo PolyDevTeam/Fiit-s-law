@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Jeu\FinishAll.cs" />
      <Compile Include="Assets\Scripts\Jeu\PanelMissAutoResize.cs" />
      <Compile Include="Assets\Scripts\Jeu\PanelVirtuelleCtrl.cs" />
+     <Compile Include="Assets\Scripts\Jeu\RecommencerEssai.cs" />
      <Compile Include="Assets\Scripts\Jeu\ReloadScene.cs" />
      <Compile Include="Assets\Scripts\Jeu\ScrollBarCtrl.cs" />
      <Compile Include="Assets\Scripts\Jeu\TargetController.cs" />
@@ -70,6 +71,7 @@
      <Compile Include="Assets\Scripts\Menu\ParamController.cs" />
      <Compile Include="Assets\Scripts\Resultat\ExportToCsv.cs" />
      <Compile Include="Assets\Scripts\Resultat\ExportToJSON.cs" />
+     <Compile Include="Assets\Scripts\Resultat\PanelResultatCtrl.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
